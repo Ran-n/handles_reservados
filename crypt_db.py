@@ -3,7 +3,7 @@
 # ------------------------------------------------------------------------------
 #+ Autor:  	Ran#
 #+ Creado: 	2022/01/28 20:03:05.222960
-#+ Editado:	2022/01/28 20:59:11.374853
+#+ Editado:	2022/01/28 21:01:07.311556
 # ------------------------------------------------------------------------------
 import sys
 import os
@@ -25,7 +25,7 @@ def cript(operacion: str, uid: str, fich_entrada: str, fich_saida: str) -> None:
         except OSError:
             pass
 # ------------------------------------------------------------------------------
-def main():
+def main(opcion_introducida):
     cnf = cargarJson('./.cnf')
 
     ops = {
@@ -34,14 +34,14 @@ def main():
             }
 
     try:
-        opcion = ops[sys.argv[1]]
+        opcion = ops[opcion_introducida]
     except KeyError:
-        raise Exception(f'{sys.argv[1]} non é considerada unha opción.')
+        raise Exception(f'{opcion_introducida} non é considerada unha opción.')
 
     cript(opcion[0], cnf['uid_gpg'], opcion[1], opcion[2])
 
 if __name__ == '__main__':
     DEBUG = True
 
-    main()
+    main(sys.argv[1])
 # ------------------------------------------------------------------------------
