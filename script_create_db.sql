@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS "entidade" (
 );
 
 CREATE TABLE IF NOT EXISTS "alias" (
-    "id_alias"  INTEGER NOT NULL UNIQUE,
+    "id_alias"      INTEGER NOT NULL UNIQUE,
     "valor_alias"   TEXT UNIQUE,
     "id_entidade"   TEXT,
     CONSTRAINT "aliasFK1" FOREIGN KEY("id_entidade") REFERENCES "entidade"("id_entidade") ON DELETE CASCADE ON UPDATE CASCADE MATCH FULL,
