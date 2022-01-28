@@ -3,10 +3,26 @@
 # ------------------------------------------------------------------------------
 #+ Autor:  	Ran#
 #+ Creado: 	2022/01/28 19:27:39.865485
-#+ Editado:	2022/01/28 19:41:44.164278
+#+ Editado:	2022/01/28 20:02:27.367501
 # ------------------------------------------------------------------------------
+import os
 import sqlite3
-from uteis.ficheiro import cargarFich
+from uteis.ficheiro import cargarFich, cargarJson
 # ------------------------------------------------------------------------------
-print(cargarFich("./script_create_db.sql"))
+cnf = cargarJson('./.cnf')
+
+db = cnf['db']
+
+try:
+    os.remove(db)
+except OSError:
+    pass
+
+con = sqlite3.connect(db)
+cur = con.cursor()
+
+con.executescript(''.join(cargarFich(cnf['script_db'])))
+
+con.commit()
+con.close()
 # ------------------------------------------------------------------------------

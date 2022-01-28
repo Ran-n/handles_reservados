@@ -1,0 +1,6 @@
+{
+    "script_db": "script_create_db.sql",
+    "db": "alias_reservados.db",
+    "db_gpg": "alias_reservados.gpg",
+    "uid_gpg": "2C425CDA7D0ABB111EE03C307502233BB040283E"
+}
